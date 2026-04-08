@@ -4,7 +4,7 @@ import { CheckCircle2, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-reac
 
 const cases = [
   {
-    title: 'ул. Мележа (Торговое помещение)',
+    title: 'Торговое помещение <br />(ул. Мележа)',
     type: 'РЕДЕВЕЛОПМЕНТ',
     images: [
       '/melezha-1.jpg',
@@ -23,7 +23,7 @@ const cases = [
     ]
   },
   {
-    title: 'ул. Дроздовича (Стрит-ритейл)',
+    title: 'Стрит-ритейл <br />(ул. Дроздовича)',
     type: 'ОПТИМИЗАЦИЯ СТРИТ-РИТЕЙЛА',
     images: [
       '/drozd-1.jpg',
@@ -42,7 +42,7 @@ const cases = [
     ]
   },
   {
-    title: 'БЦ класса А (пр-т Победителей)',
+    title: 'БЦ класса А <br />(пр-т Победителей)',
     type: 'АНТИКРИЗИСНОЕ УПРАВЛЕНИЕ',
     images: [
       '/pobed-1.jpg',
@@ -57,7 +57,7 @@ const cases = [
     result: 'Весь объем площадей полностью сдан арендаторам всего за 2 месяца по высоким ставкам. Снижена дебиторская задолженность.',
     stats: [
       { label: 'Срок заполнения', value: '2 мес.' },
-      { label: 'Средняя ставка', value: '>16 евро/м²' },
+      { label: 'Средняя ставка', value: '>16 €/м²' },
     ]
   }
 ];
@@ -165,11 +165,14 @@ export const Portfolio = () => {
               <ImageCarousel images={item.images} type={item.type} />
               
               <div className="p-5 md:p-6 flex flex-col flex-grow">
-                <h3 className="text-xl md:text-2xl font-sans font-bold leading-snug text-white mb-4">{item.title}</h3>
+                <h3 
+                  className="text-xl md:text-2xl font-sans font-bold leading-snug text-white mb-4"
+                  dangerouslySetInnerHTML={{ __html: item.title }}
+                />
                 
                 <div className="flex flex-col gap-4 flex-grow text-sm leading-relaxed">
                   {/* Point A */}
-                  <div className="flex items-start gap-3 lg:min-h-[140px]">
+                  <div className="flex items-start gap-3 lg:min-h-[160px] xl:min-h-[180px]">
                     <CheckCircle2 className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold text-white">{item.pointA.label}:</span>{' '}
@@ -198,8 +201,8 @@ export const Portfolio = () => {
                 <div className="grid grid-cols-2 gap-4 pt-6 mt-6 border-t border-brand-navy-light">
                   {item.stats.map((stat, i) => (
                     <div key={i}>
-                      <div className="text-brand-gold font-bold text-lg md:text-xl mb-1">{stat.value}</div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wider">{stat.label}</div>
+                      <div className="text-brand-gold font-bold text-lg md:text-xl mb-1 whitespace-nowrap">{stat.value}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider min-h-[40px] flex items-start">{stat.label}</div>
                     </div>
                   ))}
                 </div>
