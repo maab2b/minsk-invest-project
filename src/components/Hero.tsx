@@ -8,7 +8,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] lg:min-h-0 lg:py-24 flex items-center justify-center overflow-hidden bg-brand-navy">
+    <section className="relative min-h-[100svh] lg:min-h-0 lg:h-auto flex items-center justify-center overflow-hidden bg-brand-navy">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -22,7 +22,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 pb-12 lg:pt-0 lg:pb-0">
+      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-28 pb-16 md:py-20 lg:py-16 xl:py-24">
         {/* Left Column: Text Content */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -30,13 +30,13 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold leading-tight mb-4 text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold leading-tight lg:leading-[1.15] mb-4 lg:mb-3 text-white">
             Управление инвестициями в коммерческую недвижимость Беларуси
           </h1>
           
-          <div className="h-1 w-24 bg-brand-gold mb-6"></div>
+          <div className="h-1 w-24 bg-brand-gold mb-6 lg:mb-4"></div>
           
-          <p className="text-lg md:text-xl text-gray-300 font-light mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 font-light mb-8 lg:mb-6 leading-relaxed">
             <span className="text-brand-gold font-medium">Пассивный доход «под ключ».</span> От подбора высоколиквидных объектов на закрытых торгах до ежемесячных дивидендов.
           </p>
           
