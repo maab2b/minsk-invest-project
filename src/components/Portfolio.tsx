@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const cases = [
@@ -7,9 +7,9 @@ const cases = [
     title: 'ул. Мележа (Торговое помещение)',
     type: 'РЕДЕВЕЛОПМЕНТ',
     images: [
-      'https://picsum.photos/seed/melezha1/800/600',
-      'https://picsum.photos/seed/melezha2/800/600',
-      'https://picsum.photos/seed/melezha3/800/600',
+      '/melezha-1.jpg',
+      '/melezha-2.jpg',
+      '/melezha-3.jpg',
     ],
     pointA: {
       label: 'Точка А (До покупки)',
@@ -26,9 +26,9 @@ const cases = [
     title: 'ул. Дроздовича (Стрит-ритейл)',
     type: 'ОПТИМИЗАЦИЯ СТРИТ-РИТЕЙЛА',
     images: [
-      'https://picsum.photos/seed/drozdovicha1/800/600',
-      'https://picsum.photos/seed/drozdovicha2/800/600',
-      'https://picsum.photos/seed/drozdovicha3/800/600',
+      '/drozd-1.jpg',
+      '/drozd-2.jpg',
+      '/drozd-3.jpg',
     ],
     pointA: {
       label: 'Точка А (До покупки)',
@@ -45,9 +45,9 @@ const cases = [
     title: 'БЦ класса А (пр-т Победителей)',
     type: 'АНТИКРИЗИСНОЕ УПРАВЛЕНИЕ',
     images: [
-      'https://picsum.photos/seed/bc1/800/600',
-      'https://picsum.photos/seed/bc2/800/600',
-      'https://picsum.photos/seed/bc3/800/600',
+      '/pobed-1.jpg',
+      '/pobed-2.jpg',
+      '/pobed-3.jpg',
     ],
     pointA: {
       label: 'Точка А (До управления)',
@@ -68,40 +68,52 @@ const ImageCarousel = ({ images, type }: { images: string[], type: string }) => 
   const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
+  const handleDragEnd = (e: any, { offset, velocity }: any) => {
+    const swipeThreshold = 50;
+    if (offset.x < -swipeThreshold) {
+      next();
+    } else if (offset.x > swipeThreshold) {
+      prev();
+    }
+  };
+
   return (
-    <div className="relative h-56 overflow-hidden group/carousel">
+    <div className="relative h-56 overflow-hidden group/carousel bg-brand-navy-light/50">
       <div className="absolute inset-0 bg-brand-navy/20 group-hover/carousel:bg-transparent transition-colors z-10 pointer-events-none"></div>
       
-      <div 
-        className="flex transition-transform duration-500 h-full"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {images.map((img, i) => (
-          <img 
-            key={i}
-            src={img} 
-            alt={`Slide ${i + 1}`} 
-            className="w-full h-full object-cover shrink-0"
-            referrerPolicy="no-referrer"
-          />
-        ))}
-      </div>
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className="absolute inset-0 w-full h-full object-cover cursor-grab active:cursor-grabbing"
+          referrerPolicy="no-referrer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={handleDragEnd}
+        />
+      </AnimatePresence>
 
-      <div className="absolute top-4 left-4 z-20 bg-brand-navy/90 backdrop-blur-sm px-3 py-1 rounded text-xs font-semibold text-brand-gold uppercase tracking-wider">
+      <div className="absolute top-4 left-4 z-20 bg-brand-navy/90 backdrop-blur-sm px-3 py-1 rounded text-xs font-semibold text-brand-gold uppercase tracking-wider pointer-events-none">
         {type}
       </div>
 
       {/* Arrows */}
       <button 
         onClick={prev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-gold"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-gold hidden md:block"
         aria-label="Previous image"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
       <button 
         onClick={next}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-gold"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full opacity-0 group-hover/carousel:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand-gold hidden md:block"
         aria-label="Next image"
       >
         <ChevronRight className="w-5 h-5" />
@@ -112,7 +124,10 @@ const ImageCarousel = ({ images, type }: { images: string[], type: string }) => 
         {images.map((_, i) => (
           <button 
             key={i}
-            onClick={() => setCurrentIndex(i)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(i);
+            }}
             className={`w-2 h-2 rounded-full transition-colors focus:outline-none ${i === currentIndex ? 'bg-brand-gold' : 'bg-white/50 hover:bg-white/80'}`}
             aria-label={`Go to slide ${i + 1}`}
           />

@@ -8,7 +8,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-navy">
+    <section className="relative min-h-[100svh] lg:min-h-0 lg:py-24 flex items-center justify-center overflow-hidden bg-brand-navy">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -22,7 +22,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 pb-12">
+      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 pb-12 lg:pt-0 lg:pb-0">
         {/* Left Column: Text Content */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -60,13 +60,15 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative hidden lg:block"
         >
-          <div className="relative w-full aspect-[4/5] max-w-lg mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
+          <div className="relative w-full aspect-[4/5] max-h-[60vh] max-w-lg mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
             <img 
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop" 
               alt="Premium Commercial Interior" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
+            {/* Warm tint overlay to remove excess gray/blue */}
+            <div className="absolute inset-0 bg-brand-gold/10 mix-blend-overlay pointer-events-none"></div>
             {/* Subtle inner gradient and border for premium feel */}
             <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-3xl pointer-events-none"></div>
             <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none"></div>

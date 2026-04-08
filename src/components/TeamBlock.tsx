@@ -57,28 +57,25 @@ export const TeamBlock = () => {
 
         <div className="grid lg:grid-cols-12 gap-12 items-start max-w-6xl mx-auto">
           {/* Role Menu */}
-          <div className="lg:col-span-4 flex overflow-x-auto lg:flex-col gap-2 pb-4 lg:pb-0 scrollbar-hide">
+          <div className="lg:col-span-4 flex overflow-x-auto lg:flex-col gap-3 p-2 pb-4 lg:pb-0 scrollbar-hide">
             {teamData.map((member, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`relative text-left px-5 py-3.5 rounded-lg transition-all whitespace-nowrap lg:whitespace-normal overflow-hidden shrink-0 ${
+                className={`relative text-left px-5 py-3.5 rounded-xl transition-all duration-300 ease-in-out whitespace-nowrap lg:whitespace-normal shrink-0 font-medium text-sm md:text-base border ${
                   activeIndex === index 
-                    ? 'bg-brand-navy text-white shadow-lg' 
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                    ? 'bg-brand-navy text-white shadow-lg border-brand-navy border-l-4 border-l-brand-gold' 
+                    : 'bg-white border-slate-300 border-l-4 border-l-slate-300 shadow-sm text-slate-700 hover:border-brand-gold/50 hover:border-l-brand-gold/50 hover:text-brand-navy hover:shadow-md'
                 }`}
               >
-                {activeIndex === index && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1/2 bg-brand-gold rounded-r-sm"></div>
-                )}
-                <div className="font-medium pl-2 text-sm md:text-base">{member.title}</div>
+                {member.title}
               </button>
             ))}
           </div>
 
           {/* Central Card */}
           <div className="lg:col-span-8">
-            <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-xl border border-gray-100 min-h-[400px] relative">
+            <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-xl border border-gray-100 min-h-[400px] relative flex flex-col">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -86,7 +83,7 @@ export const TeamBlock = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="grid md:grid-cols-2 h-full"
+                  className="grid md:grid-cols-2 flex-grow items-stretch"
                 >
                   <div className="h-64 md:h-full relative">
                     <img 
@@ -102,7 +99,7 @@ export const TeamBlock = () => {
                     </div>
                   </div>
                   
-                  <div className="p-6 md:p-8 flex flex-col justify-center bg-brand-navy text-white">
+                  <div className="p-6 md:p-8 flex flex-col justify-center bg-brand-navy text-white h-full">
                     <div className="hidden md:block mb-4">
                       <div className="text-brand-gold text-sm font-semibold tracking-wider uppercase mb-2">
                         {teamData[activeIndex].title}
