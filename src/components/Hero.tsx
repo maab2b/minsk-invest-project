@@ -60,19 +60,17 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative hidden lg:block"
         >
-          <div className="relative w-full aspect-square max-w-lg mx-auto [mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_30%,transparent_70%)]">
+          <div className="relative w-full aspect-[4/5] max-w-lg mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-black/50">
             <img 
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" 
-              alt="Modern Abstract Architecture" 
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop" 
+              alt="Premium Commercial Interior" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
-            {/* Dark overlay to dim the image and blend it with the background */}
-            <div className="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
-            <div className="absolute inset-0 bg-brand-navy/40"></div>
+            {/* Subtle inner gradient and border for premium feel */}
+            <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] rounded-3xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none"></div>
           </div>
-          {/* Decorative elements behind image */}
-          <div className="absolute inset-0 bg-brand-gold/10 blur-[80px] -z-10 rounded-full"></div>
         </motion.div>
       </div>
       
