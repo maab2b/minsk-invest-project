@@ -134,15 +134,16 @@ export const TeamBlock = () => {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="group grid md:grid-cols-2 flex-grow items-stretch"
                 >
-                  <div className="h-64 md:h-full relative bg-brand-navy overflow-hidden">
+                  <div className="h-64 md:h-full relative bg-brand-navy overflow-hidden pt-16 md:pt-24">
+                    <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-navy to-transparent pointer-events-none z-10"></div>
                     <img 
                       src={teamData[activeIndex].image} 
                       alt={teamData[activeIndex].name}
-                      className="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-700 ease-in-out group-hover:scale-105"
+                      className="w-full h-full object-contain object-bottom transition-transform duration-700 ease-in-out group-hover:scale-[1.03] relative z-0"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent md:hidden"></div>
-                    <div className="absolute bottom-4 left-4 md:hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent md:hidden z-10"></div>
+                    <div className="absolute bottom-4 left-4 md:hidden z-20">
                       <div className="text-brand-gold text-sm font-semibold mb-1">{teamData[activeIndex].title}</div>
                       <div className="text-white text-2xl font-sans font-bold leading-snug">{teamData[activeIndex].name}</div>
                     </div>

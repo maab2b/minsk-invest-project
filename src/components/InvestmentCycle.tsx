@@ -49,13 +49,15 @@ export const InvestmentCycle = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: index * 0.15 } }}
-                whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.4, ease: "easeOut" } }}
                 viewport={{ once: true }}
                 className="relative flex flex-col items-center text-center cursor-default"
               >
-                <div className="w-24 h-24 rounded-full bg-brand-navy border-2 border-brand-gold flex items-center justify-center text-brand-gold mb-6 relative z-10 shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                <motion.div 
+                  whileHover={{ scale: 1.02, y: -2, transition: { duration: 0.4, ease: "easeInOut" } }}
+                  className="w-24 h-24 rounded-full bg-brand-navy border-2 border-brand-gold flex items-center justify-center text-brand-gold mb-6 relative z-10 shadow-[0_0_30px_rgba(212,175,55,0.15)]"
+                >
                   {step.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-semibold mb-4 text-white">{step.title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed">{step.desc}</p>
               </motion.div>
