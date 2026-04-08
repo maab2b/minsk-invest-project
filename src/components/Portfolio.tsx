@@ -172,7 +172,7 @@ export const Portfolio = () => {
                 
                 <div className="flex flex-col gap-4 flex-grow text-sm leading-relaxed">
                   {/* Point A */}
-                  <div className="flex items-start gap-3 lg:min-h-[160px] xl:min-h-[180px]">
+                  <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold text-white">{item.pointA.label}:</span>{' '}
