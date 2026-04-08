@@ -167,9 +167,9 @@ export const Portfolio = () => {
               <div className="p-5 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-xl md:text-2xl font-sans font-bold leading-snug text-white mb-4">{item.title}</h3>
                 
-                <div className="space-y-4 flex-grow text-sm leading-relaxed">
+                <div className="flex flex-col gap-4 flex-grow text-sm leading-relaxed">
                   {/* Point A */}
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 lg:min-h-[140px]">
                     <CheckCircle2 className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold text-white">{item.pointA.label}:</span>{' '}
@@ -187,7 +187,7 @@ export const Portfolio = () => {
                   </div>
 
                   {/* Result */}
-                  <div className="mt-6 p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg">
+                  <div className="mt-auto p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg">
                     <div className="flex items-start gap-3">
                       <TrendingUp className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                       <span className="text-gray-200 font-medium leading-relaxed">{item.result}</span>

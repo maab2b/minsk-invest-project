@@ -5,29 +5,31 @@ import { Calculator, Send, ChevronUp, ChevronDown } from 'lucide-react';
 type OwnershipType = 'Физ. лицо' | 'ИП' | 'Юр. лицо на УСН' | 'Юр. лицо на ОСН';
 
 export const RoiCalculator = () => {
-  const [propertyValue, setPropertyValue] = useState<string>('150000');
-  const [area, setArea] = useState<string>('100');
-  const [rentRate, setRentRate] = useState<string>('15');
+  const [propertyValue, setPropertyValue] = useState<number>(150000);
+  const [area, setArea] = useState<number>(100);
+  const [rentRate, setRentRate] = useState<number>(15);
   const [ownershipType, setOwnershipType] = useState<OwnershipType>('Физ. лицо');
   const [includePurchaseVat, setIncludePurchaseVat] = useState<boolean>(false);
   const [includeRentVat, setIncludeRentVat] = useState<boolean>(false);
   const [includeManagement, setIncludeManagement] = useState<boolean>(false);
 
   const handleNumberChange = (
-    setter: React.Dispatch<React.SetStateAction<string>>,
-    currentValue: string,
+    setter: React.Dispatch<React.SetStateAction<number>>,
+    currentValue: number,
     step: number,
     isIncrement: boolean
   ) => {
-    const val = parseFloat(currentValue) || 0;
-    const newVal = isIncrement ? val + step : val - step;
-    setter(Math.max(0, newVal).toString());
+    const newVal = isIncrement ? currentValue + step : currentValue - step;
+    setter(Math.max(0, newVal));
   };
 
+  const formatNumber = (val: number) => new Intl.NumberFormat('ru-RU').format(val);
+  const parseNumber = (val: string) => parseInt(val.replace(/\D/g, ''), 10) || 0;
+
   const calculations = useMemo(() => {
-    const val = parseFloat(propertyValue) || 0;
-    const a = parseFloat(area) || 0;
-    const rate = parseFloat(rentRate) || 0;
+    const val = propertyValue;
+    const a = area;
+    const rate = rentRate;
 
     // Monthly Revenue
     let monthlyRevenue = a * rate;
@@ -130,13 +132,13 @@ export const RoiCalculator = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Стоимость объекта ($)</label>
+              <label className="block text-sm font-medium text-slate-500 mb-2">Стоимость объекта ($)</label>
               <div className="relative">
                 <input 
-                  type="number" 
-                  value={propertyValue}
-                  onChange={(e) => setPropertyValue(e.target.value)}
-                  className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all bg-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
+                  type="text" 
+                  value={formatNumber(propertyValue)}
+                  onChange={(e) => setPropertyValue(parseNumber(e.target.value))}
+                  className="w-full px-4 py-3 pr-10 bg-slate-50 border border-transparent rounded-xl shadow-inner text-lg font-semibold text-brand-navy transition-all duration-300 hover:bg-white focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
                   <button type="button" onClick={() => handleNumberChange(setPropertyValue, propertyValue, 1000, true)} className="text-gray-400 hover:text-brand-gold transition-colors p-0.5"><ChevronUp className="w-4 h-4" /></button>
@@ -147,13 +149,13 @@ export const RoiCalculator = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Площадь (м²)</label>
+                <label className="block text-sm font-medium text-slate-500 mb-2">Площадь (м²)</label>
                 <div className="relative">
                   <input 
-                    type="number" 
-                    value={area}
-                    onChange={(e) => setArea(e.target.value)}
-                    className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all bg-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
+                    type="text" 
+                    value={formatNumber(area)}
+                    onChange={(e) => setArea(parseNumber(e.target.value))}
+                    className="w-full px-4 py-3 pr-10 bg-slate-50 border border-transparent rounded-xl shadow-inner text-lg font-semibold text-brand-navy transition-all duration-300 hover:bg-white focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
                   <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
                     <button type="button" onClick={() => handleNumberChange(setArea, area, 1, true)} className="text-gray-400 hover:text-brand-gold transition-colors p-0.5"><ChevronUp className="w-4 h-4" /></button>
@@ -162,13 +164,13 @@ export const RoiCalculator = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Аренда 1 м² ($)</label>
+                <label className="block text-sm font-medium text-slate-500 mb-2">Аренда 1 м² ($)</label>
                 <div className="relative">
                   <input 
-                    type="number" 
-                    value={rentRate}
-                    onChange={(e) => setRentRate(e.target.value)}
-                    className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all bg-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
+                    type="text" 
+                    value={formatNumber(rentRate)}
+                    onChange={(e) => setRentRate(parseNumber(e.target.value))}
+                    className="w-full px-4 py-3 pr-10 bg-slate-50 border border-transparent rounded-xl shadow-inner text-lg font-semibold text-brand-navy transition-all duration-300 hover:bg-white focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
                   <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
                     <button type="button" onClick={() => handleNumberChange(setRentRate, rentRate, 1, true)} className="text-gray-400 hover:text-brand-gold transition-colors p-0.5"><ChevronUp className="w-4 h-4" /></button>
@@ -179,12 +181,12 @@ export const RoiCalculator = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Форма собственности</label>
+              <label className="block text-sm font-medium text-slate-500 mb-2">Форма собственности</label>
               <div className="relative">
                 <select 
                   value={ownershipType}
                   onChange={(e) => setOwnershipType(e.target.value as OwnershipType)}
-                  className="w-full px-4 py-3 pr-10 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all bg-white appearance-none"
+                  className="w-full px-4 py-3 pr-10 bg-slate-50 border border-transparent rounded-xl shadow-inner text-lg font-semibold text-brand-navy transition-all duration-300 hover:bg-white focus:bg-white focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none appearance-none"
                 >
                   <option value="Физ. лицо">Физ. лицо</option>
                   <option value="ИП">ИП</option>
@@ -219,21 +221,15 @@ export const RoiCalculator = () => {
             )}
 
             <div className="pt-4 border-t border-gray-200">
-              <label className="flex items-start gap-3 cursor-pointer">
-                <div className="relative inline-flex items-center cursor-pointer mt-0.5">
-                  <input 
-                    type="checkbox" 
-                    checked={includeManagement}
-                    onChange={(e) => setIncludeManagement(e.target.checked)}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-gold"></div>
+              <div className="flex items-start gap-3 cursor-pointer" onClick={() => setIncludeManagement(!includeManagement)}>
+                <div className={`w-14 h-7 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 mt-0.5 shrink-0 ${includeManagement ? 'bg-brand-navy' : 'bg-gray-300'}`}>
+                  <div className={`bg-white w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 ${includeManagement ? 'translate-x-7' : 'translate-x-0'}`}></div>
                 </div>
                 <div>
-                  <span className="text-sm font-semibold text-brand-navy block">Управление «под ключ»</span>
-                  <span className="text-xs text-gray-500">Пассивный доход. Комиссия 6% от аренды.</span>
+                  <span className="text-sm font-semibold text-brand-navy block select-none">Управление «под ключ»</span>
+                  <span className="text-xs text-gray-500 select-none">Пассивный доход. Комиссия 6% от аренды.</span>
                 </div>
-              </label>
+              </div>
             </div>
           </div>
 

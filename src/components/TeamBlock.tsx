@@ -134,7 +134,7 @@ export const TeamBlock = () => {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="group grid md:grid-cols-2 flex-grow items-stretch"
                 >
-                  <div className="h-64 md:h-full relative bg-brand-navy overflow-hidden pt-16 md:pt-24">
+                  <div className="h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] relative bg-brand-navy overflow-hidden pt-16 md:pt-24 flex flex-col justify-end">
                     <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-brand-navy to-transparent pointer-events-none z-10"></div>
                     <img 
                       src={teamData[activeIndex].image} 
