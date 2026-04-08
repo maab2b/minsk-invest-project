@@ -30,7 +30,7 @@ export const InvestmentCycle = () => {
     <section className="py-12 md:py-16 lg:py-20 bg-brand-navy-light relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-6">
+          <h2 className="text-3xl lg:text-4xl font-sans font-bold leading-tight mb-6">
             Цикл <span className="text-brand-gold">инвестиций</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto font-light border-l-2 border-brand-gold pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6 md:pl-0 flex flex-col gap-4">

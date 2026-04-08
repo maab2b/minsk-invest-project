@@ -113,7 +113,7 @@ export const RoiCalculator = () => {
     <section id="calculator" className="py-12 md:py-16 lg:py-20 bg-white text-brand-navy relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-4">
+          <h2 className="text-3xl lg:text-4xl font-sans font-bold leading-tight mb-4">
             Калькулятор <span className="text-brand-gold">ROI</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -245,7 +245,7 @@ export const RoiCalculator = () => {
                 
                 <div>
                   <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">Целевая доходность (ROI)</div>
-                  <div className="text-6xl font-sans font-bold tracking-tight text-white">
+                  <div className="text-6xl font-sans font-bold text-white">
                     {calculations.roi.toFixed(2)}% <span className="text-2xl text-gray-400 font-sans font-normal tracking-normal">годовых</span>
                   </div>
                 </div>
@@ -303,7 +303,7 @@ export const RoiCalculator = () => {
 
                 {/* Premium CTA Block */}
                 <div className="mt-8 p-6 rounded-xl bg-brand-navy-light/30 border border-brand-gold/30 text-center">
-                  <h4 className="text-lg md:text-xl font-sans font-bold tracking-tight text-white mb-2">
+                  <h4 className="text-lg md:text-xl font-sans font-bold leading-snug text-white mb-2">
                     Данный расчет является базовым и показывает общую рыночную картину.
                   </h4>
                   <p className="text-gray-300 font-light mb-8 max-w-2xl mx-auto">

@@ -37,7 +37,7 @@ export const Logo = ({ className = '' }: { className?: string }) => (
       <rect x="15" y="70" width="100" height="1.5" fill="url(#gold-premium)" />
     </svg>
     <div className="text-center mt-4">
-      <h1 className="text-white font-sans tracking-[0.25em] text-lg md:text-xl leading-none">БЕЛАРУСЬ</h1>
+      <h1 className="text-white font-sans tracking-[0.25em] text-lg md:text-xl leading-tight">БЕЛАРУСЬ</h1>
       <p className="text-brand-gold font-sans tracking-[0.25em] text-[0.5rem] uppercase mt-2 opacity-80">Управление активами</p>
     </div>
   </div>

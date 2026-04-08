@@ -128,7 +128,7 @@ export const Portfolio = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-4 text-white">
+            <h2 className="text-3xl lg:text-4xl font-sans font-bold leading-tight mb-4 text-white">
               Примеры из <span className="text-brand-gold">портфолио</span>
             </h2>
             <p className="text-gray-400 max-w-2xl font-light">
@@ -150,7 +150,7 @@ export const Portfolio = () => {
               <ImageCarousel images={item.images} type={item.type} />
               
               <div className="p-5 md:p-6 flex flex-col flex-grow">
-                <h3 className="text-xl md:text-2xl font-sans font-bold tracking-tight text-white mb-4">{item.title}</h3>
+                <h3 className="text-xl md:text-2xl font-sans font-bold leading-snug text-white mb-4">{item.title}</h3>
                 
                 <div className="space-y-4 flex-grow text-sm leading-relaxed">
                   {/* Point A */}

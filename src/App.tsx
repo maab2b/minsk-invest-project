@@ -14,7 +14,7 @@ import { FinalCta } from './components/FinalCta';
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-brand-navy text-white font-sans selection:bg-brand-gold selection:text-brand-navy">
+    <main className="min-h-screen bg-brand-navy text-white font-sans selection:bg-brand-gold selection:text-brand-navy overflow-x-hidden">
       <Hero />
       <AuthorityStats />
       <RoiCalculator />

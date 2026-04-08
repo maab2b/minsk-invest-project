@@ -47,7 +47,7 @@ export const TeamBlock = () => {
     <section className="py-12 md:py-16 lg:py-20 bg-white text-brand-navy">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-4">
+          <h2 className="text-3xl lg:text-4xl font-sans font-bold leading-tight mb-4">
             Комплексная <span className="text-brand-gold">инфраструктура</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto font-light">
@@ -98,7 +98,7 @@ export const TeamBlock = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent md:hidden"></div>
                     <div className="absolute bottom-4 left-4 md:hidden">
                       <div className="text-brand-gold text-sm font-semibold mb-1">{teamData[activeIndex].title}</div>
-                      <div className="text-white text-2xl font-sans font-bold tracking-tight">{teamData[activeIndex].name}</div>
+                      <div className="text-white text-2xl font-sans font-bold leading-snug">{teamData[activeIndex].name}</div>
                     </div>
                   </div>
                   
@@ -107,7 +107,7 @@ export const TeamBlock = () => {
                       <div className="text-brand-gold text-sm font-semibold tracking-wider uppercase mb-2">
                         {teamData[activeIndex].title}
                       </div>
-                      <h3 className="text-3xl font-sans font-bold tracking-tight">{teamData[activeIndex].name}</h3>
+                      <h3 className="text-3xl font-sans font-bold leading-snug">{teamData[activeIndex].name}</h3>
                     </div>
                     
                     <div className="w-12 h-1 bg-brand-gold mb-4 hidden md:block"></div>

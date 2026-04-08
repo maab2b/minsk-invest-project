@@ -13,7 +13,7 @@ export const AuthorityStats = () => {
     <section className="py-12 md:py-16 lg:py-20 bg-brand-navy relative z-10">
       <div className="container mx-auto px-6">
         <div className="mb-12">
-          <h2 className="text-3xl lg:text-4xl font-sans font-bold tracking-tight mb-4">
+          <h2 className="text-3xl lg:text-4xl font-sans font-bold leading-tight mb-4">
             Масштаб и <span className="text-brand-gold">Опыт</span>
           </h2>
           <div className="h-0.5 w-full max-w-3xl bg-brand-navy-light relative">
@@ -34,7 +34,7 @@ export const AuthorityStats = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-brand-navy-light/50 border border-brand-navy-light p-6 hover:border-brand-gold/30 transition-colors group"
             >
-              <div className="text-4xl lg:text-5xl font-sans font-bold tracking-tight text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
+              <div className="text-4xl lg:text-5xl font-sans font-bold text-brand-gold mb-3 group-hover:scale-105 transition-transform origin-left">
                 {stat.value}
               </div>
               <h3 className="text-xl font-medium text-white mb-3">{stat.label}</h3>

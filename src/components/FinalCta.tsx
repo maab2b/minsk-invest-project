@@ -19,7 +19,7 @@ export const FinalCta = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-extrabold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-extrabold text-white mb-6 leading-tight">
               Готовы обсудить формирование вашего <span className="text-brand-gold">инвестиционного портфеля?</span>
             </h2>
             
